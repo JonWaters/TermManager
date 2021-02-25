@@ -91,8 +91,8 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End Date Alarm:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/alarmEndDateEditText"
+        android:text="Due Date Alarm:"
+        app:layout_constraintBaseline_toBaselineOf="@+id/alarmDueDateEditText"
         app:layout_constraintEnd_toEndOf="@+id/textView19" />
 
     <TextView
@@ -221,7 +221,7 @@
         app:layout_constraintTop_toBottomOf="@+id/instructorEmailEditText" />
 
     <EditText
-        android:id="@+id/alarmEndDateEditText"
+        android:id="@+id/alarmDueDateEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"

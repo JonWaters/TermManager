@@ -132,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="End Date Alarm:"
+        android:text="Due Date Alarm:"
         app:layout_constraintEnd_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -186,7 +186,7 @@
         app:layout_constraintTop_toBottomOf="@+id/instructorPhoneText" />
 
     <TextView
-        android:id="@+id/startAlarmText"
+        android:id="@+id/startDateAlarmText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -196,14 +196,14 @@
         app:layout_constraintTop_toBottomOf="@+id/instructorEmailText" />
 
     <TextView
-        android:id="@+id/endAlarmText"
+        android:id="@+id/dueDateAlarmText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="01/01/2020"
         app:layout_constraintStart_toEndOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/startAlarmText" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateAlarmText" />
 
     <Button
         android:id="@+id/courseDetailNotesButton"

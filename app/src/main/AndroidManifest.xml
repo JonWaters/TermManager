@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".MenuActivity"/>
         <activity android:name=".TermListActivity"/>
+        <activity android:name=".CourseListActivity"/>
     </application>
 
 </manifest>

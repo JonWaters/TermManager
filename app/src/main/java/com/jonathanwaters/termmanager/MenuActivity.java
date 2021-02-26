@@ -1,6 +1,6 @@
 package com.jonathanwaters.termmanager;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +20,15 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, TermListActivity.class);
+                MenuActivity.this.startActivity(intent);
+            }
+        });
+
+        final Button coursesButton = (Button) findViewById(R.id.coursesButton);
+        coursesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, CourseListActivity.class);
                 MenuActivity.this.startActivity(intent);
             }
         });

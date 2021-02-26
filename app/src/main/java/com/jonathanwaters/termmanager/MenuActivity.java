@@ -32,5 +32,14 @@ public class MenuActivity extends AppCompatActivity {
                 MenuActivity.this.startActivity(intent);
             }
         });
+
+        final Button assessmentsButton = (Button) findViewById(R.id.assessmentsButton);
+        assessmentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, AssessmentListActivity.class);
+                MenuActivity.this.startActivity(intent);
+            }
+        });
     }
 }

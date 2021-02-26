@@ -21,7 +21,7 @@ public interface AssessmentDAO {
     void update(Assessment assessment);
 
     @Query("UPDATE assessment SET course_id = :courseID WHERE id = :assessmentID")
-    void updateTermID(int assessmentID, int courseID);
+    void updateCourseID(int assessmentID, int courseID);
 
     @Delete
     void delete(Assessment assessment);

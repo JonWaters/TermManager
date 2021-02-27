@@ -16,6 +16,9 @@ public interface TermDAO {
     @Query("SELECT * FROM term WHERE id = :id")
     Term getByID(int id);
 
+    @Query("SELECT COUNT(id) FROM term")
+    int count();
+
     @Insert
     void insert(Term term);
 

@@ -16,6 +16,9 @@ public interface CourseDAO {
     @Query("SELECT * FROM course WHERE id = :id")
     Course getByID(int id);
 
+    @Query("SELECT COUNT(id) FROM course")
+    int count();
+
     @Insert
     void insert(Course course);
 

@@ -197,11 +197,15 @@ public class PopulateDB {
 
     public static void populate(Context context) {
         Database db = Database.getInstance(context);
-        db.termDAO().insert(spring2021);
-        db.termDAO().insert(fall2021);
-        db.courseDAO().insert(c195);
-        db.courseDAO().insert(c196);
-        db.assessmentDAO().insert(c195Assessment);
-        db.assessmentDAO().insert(c196Assessment);
+        if (db.termDAO().count() == 0 &&
+            db.courseDAO().count() == 0 &&
+            db.assessmentDAO().count() == 0) {
+            db.termDAO().insert(spring2021);
+            db.termDAO().insert(fall2021);
+            db.courseDAO().insert(c195);
+            db.courseDAO().insert(c196);
+            db.assessmentDAO().insert(c195Assessment);
+            db.assessmentDAO().insert(c196Assessment);
+        }
     }
 }

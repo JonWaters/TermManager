@@ -16,6 +16,9 @@ public interface AssessmentDAO {
     @Query("SELECT * FROM assessment WHERE id = :id")
     Assessment getByID(int id);
 
+    @Query("SELECT COUNT(id) FROM assessment")
+    int count();
+
     @Insert
     void insert(Assessment assessment);
 

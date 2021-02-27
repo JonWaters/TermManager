@@ -29,5 +29,13 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+
+        final Button dbButton = (Button) findViewById(R.id.populateDbButton);
+        dbButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopulateDB.populate(context);
+            }
+        });
     }
 }

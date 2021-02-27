@@ -2,19 +2,18 @@ package com.jonathanwaters.termmanager;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "assessment",
-        foreignKeys = @ForeignKey(
-                entity = Course.class,
-                parentColumns = "id",
-                childColumns = "course_id",
-                onDelete = ForeignKey.CASCADE
-        )
+@Entity(tableName = "assessment"
+//        ,foreignKeys = @ForeignKey(
+//                entity = Course.class,
+//                parentColumns = "id",
+//                childColumns = "course_id",
+//                onDelete = ForeignKey.CASCADE
+//        )
 )
 public class Assessment {
     @PrimaryKey(autoGenerate = true)
@@ -31,10 +30,12 @@ public class Assessment {
     private String info;
     @ColumnInfo(name = "alarm_date")
     private Date alarmDate;
+    @ColumnInfo(name = "status")
+    private String status;
     @ColumnInfo(name = "course_id")
     private int courseID;
 
-    public Assessment(int id, String name, String type, String title, Date dueDate, String info, Date alarmDate, int courseID) {
+    public Assessment(int id, String name, String type, String title, Date dueDate, String info, Date alarmDate, String status, int courseID) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -42,17 +43,19 @@ public class Assessment {
         this.dueDate = dueDate;
         this.info = info;
         this.alarmDate = alarmDate;
+        this.status= status;
         this.courseID = courseID;
     }
 
     @Ignore
-    public Assessment(String name, String type, String title, Date dueDate, String info, Date alarmDate, int courseID) {
+    public Assessment(String name, String type, String title, Date dueDate, String info, Date alarmDate, String status, int courseID) {
         this.name = name;
         this.type = type;
         this.title = title;
         this.dueDate = dueDate;
         this.info = info;
         this.alarmDate = alarmDate;
+        this.status = status;
         this.courseID = courseID;
     }
 
@@ -110,6 +113,14 @@ public class Assessment {
 
     public void setAlarmDate(Date alarmDate) {
         this.alarmDate = alarmDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getCourseID() {

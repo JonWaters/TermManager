@@ -11,11 +11,11 @@ import androidx.room.TypeConverters;
 public abstract class Database extends RoomDatabase {
 
     private static final String DB_NAME = "tm_db";
-    private static Builder<Database> instance;
+    private static Database instance;
 
-    public static synchronized Builder<Database> getInstance(Context context) {
+    public static synchronized Database getInstance(Context context) {
         if (instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(), Database.class, DB_NAME).allowMainThreadQueries();
+            instance = Room.databaseBuilder(context.getApplicationContext(), Database.class, DB_NAME).allowMainThreadQueries().build();
         }
         return instance;
     }

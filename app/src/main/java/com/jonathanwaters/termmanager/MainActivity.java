@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         Database db = Database.getInstance(context);
 
-        db.termDAO().getAll();
+        PopulateDB.populate(context);
 
         final Button enterButton = (Button) findViewById(R.id.enterButton);
         enterButton.setOnClickListener(new View.OnClickListener() {

@@ -165,7 +165,8 @@ public class PopulateDB {
     }
 
     private static Assessment c195Assessment = new Assessment("C195 Assessment", "Performance",
-            "Assessment title", c195AssessmentDue, "Assessment info", c195AssessmentAlarm, 0);
+            "Assessment title", c195AssessmentDue, "Assessment info", c195AssessmentAlarm,
+            "Passed", 0);
 
     private static Date c196AssessmentDue;
 
@@ -188,18 +189,19 @@ public class PopulateDB {
     }
 
     private static Assessment c196Assessment = new Assessment("C196 Assessment", "Performance",
-            "Assessment title", c196AssessmentDue, "Assessment info", c196AssessmentAlarm, 0);
+            "Assessment title", c196AssessmentDue, "Assessment info", c196AssessmentAlarm,
+            "Pending", 0);
 
     public PopulateDB() throws ParseException {
     }
 
     public static void populate(Context context) {
         Database db = Database.getInstance(context);
-//        db.termDAO().insert(spring2021);
-//        db.termDAO().insert(fall2021);
+        db.termDAO().insert(spring2021);
+        db.termDAO().insert(fall2021);
         db.courseDAO().insert(c195);
-//        db.courseDAO().insert(c196);
-//        db.assessmentDAO().insert(c195Assessment);
-//        db.assessmentDAO().insert(c196Assessment);
+        db.courseDAO().insert(c196);
+        db.assessmentDAO().insert(c195Assessment);
+        db.assessmentDAO().insert(c196Assessment);
     }
 }

@@ -32,6 +32,10 @@ public class Term {
         this.endDate = endDate;
     }
 
+    @Ignore
+    public Term() {
+    }
+
     public int getId() {
         return id;
     }

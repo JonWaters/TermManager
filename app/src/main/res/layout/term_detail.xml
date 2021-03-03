@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/courseNameText"
+        android:id="@+id/termNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -28,7 +28,7 @@
         android:layout_marginTop="16dp"
         android:text="Start Date:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/termNameText" />
 
     <TextView
         android:id="@+id/textView12"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
-        android:id="@+id/typeText"
+        android:id="@+id/startDateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -56,7 +56,7 @@
         android:layout_marginTop="8dp"
         android:text="01/01/2021"
         app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/typeText" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateText" />
 
     <ListView
         android:id="@+id/termDetailListView"

@@ -9,12 +9,17 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TermListActivity extends AppCompatActivity {
 
     ListView termList;
+    Database db = Database.getInstance(this);
+    List<Term> allTerms = db.termDAO().getAll();
+    //List<String> termNames = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,15 @@ public class TermListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(TermListActivity.this, TermDetailActivity.class);
+                intent.putExtra("termID", allTerms.get(position).getId());
+                TermListActivity.this.startActivity(intent);
+            }
+        });
+
+        FloatingActionButton itemListFAB = (FloatingActionButton) findViewById(R.id.itemListFAB);
+        itemListFAB.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(TermListActivity.this, TermAddActivity.class);
                 TermListActivity.this.startActivity(intent);
             }
         });
@@ -36,8 +50,6 @@ public class TermListActivity extends AppCompatActivity {
     }
 
     private void populateList() {
-        Database db = Database.getInstance(this);
-        List<Term> allTerms = db.termDAO().getAll();
         List<String> termNames = new ArrayList<>();
         String termName;
 

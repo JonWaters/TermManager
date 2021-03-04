@@ -23,19 +23,6 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/courseEndDateEditText"
         app:layout_constraintEnd_toEndOf="@+id/textView11" />
 
-    <ListView
-        android:id="@+id/courseEditListView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/courseEditNotesButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/courseEditFAB"
         android:layout_width="wrap_content"
@@ -100,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Assessments:"
+        android:text="Term:"
         app:layout_constraintEnd_toEndOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -232,5 +219,16 @@
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/alarmStartDateEditText" />
+
+    <Spinner
+        android:id="@+id/courseTermSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/alarmDueDateEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

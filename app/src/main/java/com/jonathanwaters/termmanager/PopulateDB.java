@@ -96,7 +96,7 @@ public class PopulateDB {
     private static Course c195 = new Course("C195", c195Start, c195End, "Completed",
             "Carolyn Sher-DeCusatis", "385-428-7192",
             "carolyn.sher@wgu.edu", c195StartAlarm, c195DueAlarm, "Sample notes",
-            0);
+            1);
 
     private static Date c196Start;
 
@@ -141,7 +141,7 @@ public class PopulateDB {
     private static Course c196 = new Course("C196", c196Start, c196End, "In Progress",
             "Carolyn Sher-DeCusatis", "385-428-7192",
             "carolyn.sher@wgu.edu", c196StartAlarm, c196DueAlarm, "Sample notes",
-            0);
+            2);
 
     //Create assessments
     private static Date c195AssessmentDue;
@@ -166,7 +166,7 @@ public class PopulateDB {
 
     private static Assessment c195Assessment = new Assessment("C195 Assessment", "Performance",
             "Assessment title", c195AssessmentDue, "Assessment info", c195AssessmentAlarm,
-            "Passed", 0);
+            "Passed", 1);
 
     private static Date c196AssessmentDue;
 
@@ -190,7 +190,7 @@ public class PopulateDB {
 
     private static Assessment c196Assessment = new Assessment("C196 Assessment", "Performance",
             "Assessment title", c196AssessmentDue, "Assessment info", c196AssessmentAlarm,
-            "Pending", 0);
+            "Pending", 2);
 
     public PopulateDB() throws ParseException {
     }

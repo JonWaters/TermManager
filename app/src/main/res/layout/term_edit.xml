@@ -23,19 +23,6 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/termEndDateEditText"
         app:layout_constraintEnd_toEndOf="@+id/textView11" />
 
-    <ListView
-        android:id="@+id/termEditListView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/termEditFAB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/termEditFAB"
         android:layout_width="wrap_content"
@@ -46,15 +33,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_save" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Courses:"
-        app:layout_constraintEnd_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView25"

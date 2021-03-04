@@ -2,18 +2,19 @@ package com.jonathanwaters.termmanager;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
 @Entity(tableName = "assessment"
-//        ,foreignKeys = @ForeignKey(
-//                entity = Course.class,
-//                parentColumns = "id",
-//                childColumns = "course_id",
-//                onDelete = ForeignKey.CASCADE
-//        )
+        ,foreignKeys = @ForeignKey(
+                entity = Course.class,
+                parentColumns = "id",
+                childColumns = "course_id",
+                onDelete = ForeignKey.CASCADE
+        )
 )
 public class Assessment {
     @PrimaryKey(autoGenerate = true)

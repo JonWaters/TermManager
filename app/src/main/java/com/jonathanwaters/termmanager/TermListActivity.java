@@ -17,14 +17,16 @@ import java.util.List;
 public class TermListActivity extends AppCompatActivity {
 
     ListView termList;
-    Database db = Database.getInstance(this);
-    List<Term> allTerms = db.termDAO().getAll();
-    //List<String> termNames = new ArrayList<>();
+    Database db;
+    List<Term> allTerms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_list);
+
+        db = Database.getInstance(this);
+        allTerms = db.termDAO().getAll();
 
         termList = (ListView) findViewById(R.id.itemListView);
 

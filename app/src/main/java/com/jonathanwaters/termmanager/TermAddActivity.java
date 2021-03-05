@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,10 @@ public class TermAddActivity extends AppCompatActivity {
     TextView termNameText;
     EditText startDateText;
     EditText endDateText;
+
+    String termName;
+    Date startDate;
+    Date endDate;
     Term newTerm;
 
     Database db;
@@ -38,28 +43,44 @@ public class TermAddActivity extends AppCompatActivity {
         termEditFAB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                System.out.println("The new term save FAB was clicked");
-
-                newTerm.setName(termNameText.getText().toString());
-
-                Date startDate;
-                try {
-                    startDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateText.getText().toString());
+                if (isValidInput()) {
+                    newTerm.setName(termName);
                     newTerm.setStartDate(startDate);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                Date endDate;
-                try {
-                    endDate = new SimpleDateFormat("MM/dd/yyyy").parse(endDateText.getText().toString());
                     newTerm.setEndDate(endDate);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                    db.termDAO().insert(newTerm);
+                    Toast.makeText(getApplicationContext(), "The new term was added", Toast.LENGTH_SHORT).show();
 
-                db.termDAO().insert(newTerm);
+                }
             }
         });
+    }
+
+    private boolean isValidInput() {
+        boolean isValid = true;
+
+        termName = termNameText.getText().toString();
+
+        if (termName.matches("")) {
+            isValid = false;
+            Toast.makeText(this, "The name cannot be blank", Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            startDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateText.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            isValid = false;
+            Toast.makeText(this, "The start date is invalid", Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            endDate = new SimpleDateFormat("MM/dd/yyyy").parse(endDateText.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            isValid = false;
+            Toast.makeText(this, "The end date is invalid", Toast.LENGTH_SHORT).show();
+        }
+
+        return isValid;
     }
 }

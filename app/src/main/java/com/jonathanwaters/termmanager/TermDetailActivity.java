@@ -89,6 +89,9 @@ public class TermDetailActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        selectedTerm = db.termDAO().getByID(termID);
+
         populateList();
 
         termName.setText(selectedTerm.getName());

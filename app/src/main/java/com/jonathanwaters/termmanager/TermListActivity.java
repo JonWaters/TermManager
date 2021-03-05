@@ -72,6 +72,9 @@ public class TermListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        allTerms = db.termDAO().getAll();
+
         populateList();
     }
 }

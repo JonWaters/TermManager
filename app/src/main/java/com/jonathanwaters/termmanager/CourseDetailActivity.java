@@ -1,13 +1,21 @@
 package com.jonathanwaters.termmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDetailActivity extends AppCompatActivity {
@@ -24,6 +32,8 @@ public class CourseDetailActivity extends AppCompatActivity {
     TextView ciEmail;
     TextView startAlarm;
     TextView dueAlarm;
+    TextView notesText;
+
     Course selectedCourse;
     int courseID;
     List<Assessment> allAssessments;
@@ -44,11 +54,37 @@ public class CourseDetailActivity extends AppCompatActivity {
         ciEmail = (TextView) findViewById(R.id.instructorEmailText);
         startAlarm = (TextView) findViewById(R.id.startDateAlarmText);
         dueAlarm = (TextView) findViewById(R.id.dueDateAlarmText);
+        notesText = (TextView) findViewById(R.id.courseDetailNotesText);
 
+        notesText.setMovementMethod(new ScrollingMovementMethod());
         db = Database.getInstance(this);
         courseID = getIntent().getExtras().getInt("courseID");
 
+        final Button shareButton = (Button) findViewById(R.id.courseDetailShareButton);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                String shareTitle = "My " + selectedCourse.getName() + " course notes.";
+                intent.setType("text/plain");
+                intent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareTitle);
+                intent.putExtra(android.content.Intent.EXTRA_TEXT, selectedCourse.getNotes());
+                startActivity(Intent.createChooser(intent, null));
+            }
+        });
+
+        FloatingActionButton courseDetailFAB = (FloatingActionButton) findViewById(R.id.courseDetailFAB);
+        courseDetailFAB.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(CourseDetailActivity.this, CourseEditActivity.class);
+                intent.putExtra("courseID", courseID);
+                CourseDetailActivity.this.startActivity(intent);
+            }
+        });
+
         populateFields();
+        populateList();
     }
 
     private void populateFields() {
@@ -63,5 +99,37 @@ public class CourseDetailActivity extends AppCompatActivity {
         ciEmail.setText(selectedCourse.getInstructorEmail());
         startAlarm.setText(dateFormat.format(selectedCourse.getStartAlarm()));
         dueAlarm.setText(dateFormat.format(selectedCourse.getDueAlarm()));
+        notesText.setText(selectedCourse.getNotes());
+    }
+
+    private void populateList() {
+        allAssessments = db.assessmentDAO().getAll();
+        List<String> assessments = new ArrayList<>();
+        String assessmentName;
+        int assessmentCourseID;
+
+        for (Assessment assessment : allAssessments) {
+            assessmentName = assessment.getName();
+            assessmentCourseID = assessment.getCourseID();
+
+            if (assessmentCourseID == courseID) {
+                assessments.add(assessmentName);
+            }
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                assessments
+        );
+
+        assessmentList.setAdapter(arrayAdapter);
+
+    }
+
+    protected void onCreate() {
+        super.onResume();
+        populateFields();
+        populateList();
     }
 }

@@ -26,6 +26,7 @@
         <activity android:name=".TermEditActivity"/>
         <activity android:name=".CourseDetailActivity"/>
         <activity android:name=".CourseAddActivity"/>
+        <activity android:name=".CourseEditActivity"/>
     </application>
 
 </manifest>

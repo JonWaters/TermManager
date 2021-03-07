@@ -76,6 +76,10 @@ public class Course {
         this.termID = termID;
     }
 
+    @Ignore
+    public Course() {
+    }
+
     public int getId() {
         return id;
     }

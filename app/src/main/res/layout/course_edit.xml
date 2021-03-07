@@ -227,7 +227,7 @@
             app:layout_constraintTop_toBottomOf="@+id/alarmDueDateEditText" />
 
         <EditText
-            android:id="@+id/courseEditNotesText"
+            android:id="@+id/courseNotesEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -252,7 +252,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Notes:"
-            app:layout_constraintStart_toStartOf="@+id/courseEditNotesText"
+            app:layout_constraintStart_toStartOf="@+id/courseNotesEditText"
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

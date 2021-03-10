@@ -49,7 +49,7 @@ public class TermAddActivity extends AppCompatActivity {
                     newTerm.setEndDate(endDate);
                     db.termDAO().insert(newTerm);
                     Toast.makeText(getApplicationContext(), "The new term was added", Toast.LENGTH_SHORT).show();
-
+                    finish();
                 }
             }
         });

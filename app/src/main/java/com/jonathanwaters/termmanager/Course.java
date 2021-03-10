@@ -41,10 +41,15 @@ public class Course {
     private String notes;
     @ColumnInfo(name = "term_id")
     private int termID;
+    @ColumnInfo(name = "start_alarm_code")
+    private int startAlarmCode;
+    @ColumnInfo(name = "due_alarm_code")
+    private int dueAlarmCode;
 
     public Course(int id, String name, Date startDate, Date endDate, String status,
                   String instructorName, String instructorPhone, String instructorEmail,
-                  Date startAlarm, Date dueAlarm, String notes, int termID) {
+                  Date startAlarm, Date dueAlarm, String notes, int termID,
+                  int startAlarmCode, int dueAlarmCode) {
         this.id = id;
         this.name = name;
         this.startDate = startDate;
@@ -57,12 +62,14 @@ public class Course {
         this.dueAlarm = dueAlarm;
         this.notes = notes;
         this.termID = termID;
+        this.startAlarmCode = startAlarmCode;
+        this.dueAlarmCode = dueAlarmCode;
     }
 
     @Ignore
     public Course(String name, Date startDate, Date endDate, String status, String instructorName,
                   String instructorPhone, String instructorEmail, Date startAlarm, Date dueAlarm,
-                  String notes, int termID) {
+                  String notes, int termID, int startAlarmCode, int dueAlarmCode) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -74,6 +81,8 @@ public class Course {
         this.dueAlarm = dueAlarm;
         this.notes = notes;
         this.termID = termID;
+        this.startAlarmCode = startAlarmCode;
+        this.dueAlarmCode = dueAlarmCode;
     }
 
     @Ignore
@@ -174,5 +183,21 @@ public class Course {
 
     public void setTermID(int termID) {
         this.termID = termID;
+    }
+
+    public int getStartAlarmCode() {
+        return startAlarmCode;
+    }
+
+    public void setStartAlarmCode(int startAlarmCode) {
+        this.startAlarmCode = startAlarmCode;
+    }
+
+    public int getDueAlarmCode() {
+        return dueAlarmCode;
+    }
+
+    public void setDueAlarmCode(int dueAlarmCode) {
+        this.dueAlarmCode = dueAlarmCode;
     }
 }

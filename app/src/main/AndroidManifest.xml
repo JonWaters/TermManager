@@ -27,6 +27,9 @@
         <activity android:name=".CourseDetailActivity"/>
         <activity android:name=".CourseAddActivity"/>
         <activity android:name=".CourseEditActivity"/>
+        <receiver android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>

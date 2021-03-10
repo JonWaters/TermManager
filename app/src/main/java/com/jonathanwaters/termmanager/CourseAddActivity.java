@@ -1,5 +1,9 @@
 package com.jonathanwaters.termmanager;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +46,6 @@ public class CourseAddActivity extends AppCompatActivity {
     Date startAlarm;
     Date dueAlarm;
     String termName;
-    String notes;
 
     Database db;
     List<Term> termList;
@@ -73,7 +77,7 @@ public class CourseAddActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (isValidInput()) {
-                    newCourse.setName(termName);
+                    newCourse.setName(courseName);
                     newCourse.setStartDate(startDate);
                     newCourse.setEndDate(endDate);
                     newCourse.setStatus(status);
@@ -84,10 +88,15 @@ public class CourseAddActivity extends AppCompatActivity {
                     newCourse.setDueAlarm(dueAlarm);
                     newCourse.setTermID(getSelectedTermID());
                     newCourse.setNotes(notesText.getText().toString());
-                    //db.courseDAO().insert(newCourse);
+                    newCourse.setStartAlarmCode(AlarmID.getAlarmID());
+                    newCourse.setDueAlarmCode(AlarmID.getAlarmID());
+                    db.courseDAO().insert(newCourse);
+                    setStartAlarm();
+                    setDueAlarm();
                     Toast.makeText(getApplicationContext(), "The new course was added", Toast.LENGTH_SHORT).show();
-
+                    finish();
                 }
+
             }
         });
 
@@ -216,5 +225,29 @@ public class CourseAddActivity extends AppCompatActivity {
         termID = selectedTerm.getId();
 
         return termID;
+    }
+
+    private void setStartAlarm() {
+
+        Calendar alarmStartCal = Calendar.getInstance();
+        alarmStartCal.setTime(startAlarm);
+
+        Intent intent = new Intent(CourseAddActivity.this, AlarmReceiver.class);
+        intent.putExtra("mesg", "The " + courseName + " course is starting today");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(CourseAddActivity.this, newCourse.getStartAlarmCode(), intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmStartCal.getTimeInMillis(), pendingIntent);
+    }
+
+    private void setDueAlarm() {
+
+        Calendar alarmStartCal = Calendar.getInstance();
+        alarmStartCal.setTime(dueAlarm);
+
+        Intent intent = new Intent(CourseAddActivity.this, AlarmReceiver.class);
+        intent.putExtra("mesg", "The " + courseName + " course is due today");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(CourseAddActivity.this, newCourse.getDueAlarmCode(), intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmStartCal.getTimeInMillis(), pendingIntent);
     }
 }

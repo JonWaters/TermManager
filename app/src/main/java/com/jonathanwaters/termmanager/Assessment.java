@@ -35,8 +35,11 @@ public class Assessment {
     private String status;
     @ColumnInfo(name = "course_id")
     private int courseID;
+    @ColumnInfo(name = "alarm_code")
+    private int alarmCode;
 
-    public Assessment(int id, String name, String type, String title, Date dueDate, String info, Date alarmDate, String status, int courseID) {
+    public Assessment(int id, String name, String type, String title, Date dueDate, String info,
+                      Date alarmDate, String status, int courseID, int alarmCode) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -46,10 +49,12 @@ public class Assessment {
         this.alarmDate = alarmDate;
         this.status= status;
         this.courseID = courseID;
+        this.alarmCode = alarmCode;
     }
 
     @Ignore
-    public Assessment(String name, String type, String title, Date dueDate, String info, Date alarmDate, String status, int courseID) {
+    public Assessment(String name, String type, String title, Date dueDate, String info,
+                      Date alarmDate, String status, int courseID, int alarmCode) {
         this.name = name;
         this.type = type;
         this.title = title;
@@ -58,6 +63,11 @@ public class Assessment {
         this.alarmDate = alarmDate;
         this.status = status;
         this.courseID = courseID;
+        this.alarmCode = alarmCode;
+    }
+
+    @Ignore
+    public Assessment() {
     }
 
     public int getId() {
@@ -130,5 +140,13 @@ public class Assessment {
 
     public void setCourseID(int courseID) {
         this.courseID = courseID;
+    }
+
+    public int getAlarmCode() {
+        return alarmCode;
+    }
+
+    public void setAlarmCode(int alarmCode) {
+        this.alarmCode = alarmCode;
     }
 }

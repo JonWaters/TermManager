@@ -88,8 +88,8 @@ public class CourseAddActivity extends AppCompatActivity {
                     newCourse.setDueAlarm(dueAlarm);
                     newCourse.setTermID(getSelectedTermID());
                     newCourse.setNotes(notesText.getText().toString());
-                    newCourse.setStartAlarmCode(AlarmID.getAlarmID());
-                    newCourse.setDueAlarmCode(AlarmID.getAlarmID());
+                    newCourse.setStartAlarmCode(AlarmID.getAlarmID(getApplicationContext()));
+                    newCourse.setDueAlarmCode(AlarmID.getAlarmID(getApplicationContext()));
                     db.courseDAO().insert(newCourse);
                     setStartAlarm();
                     setDueAlarm();

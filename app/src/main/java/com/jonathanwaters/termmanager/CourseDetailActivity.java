@@ -127,7 +127,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
     }
 
-    protected void onCreate() {
+    protected void onResume() {
         super.onResume();
         populateFields();
         populateList();

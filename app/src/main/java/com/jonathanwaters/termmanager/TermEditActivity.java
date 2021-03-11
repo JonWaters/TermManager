@@ -53,7 +53,7 @@ public class TermEditActivity extends AppCompatActivity {
                     selectedTerm.setEndDate(endDate);
                     db.termDAO().update(selectedTerm);
                     Toast.makeText(getApplicationContext(), "The term was modified", Toast.LENGTH_SHORT).show();
-
+                    finish();
                 }
             }
         });

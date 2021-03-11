@@ -6,7 +6,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@androidx.room.Database(entities = {Term.class, Course.class, Assessment.class}, exportSchema = false, version = 1)
+@androidx.room.Database(entities = {Term.class, Course.class, Assessment.class, AlarmID.class}, exportSchema = false, version = 1)
 @TypeConverters({Converters.class})
 public abstract class Database extends RoomDatabase {
 
@@ -25,4 +25,5 @@ public abstract class Database extends RoomDatabase {
     public abstract TermDAO termDAO();
     public abstract CourseDAO courseDAO();
     public abstract AssessmentDAO assessmentDAO();
+    public abstract AlarmDAO alarmDAO();
 }

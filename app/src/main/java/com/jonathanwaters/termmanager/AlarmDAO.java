@@ -11,6 +11,9 @@ public interface AlarmDAO {
     @Query("SELECT * FROM alarm")
     List<AlarmID> getAll();
 
+    @Query("SELECT COUNT(id) FROM alarm")
+    int count();
+
     @Insert
     void insert(AlarmID alarmID);
 }

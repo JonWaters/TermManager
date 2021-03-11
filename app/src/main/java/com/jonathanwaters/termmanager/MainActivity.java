@@ -56,9 +56,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Database db = Database.getInstance(this);
-        AlarmID alarmID = new AlarmID();
-        alarmID.setRequestCode(0);
-        db.alarmDAO().insert(alarmID);
+
+        if (db.alarmDAO().count() == 0) {
+            AlarmID alarmID = new AlarmID();
+            alarmID.setRequestCode(0);
+            db.alarmDAO().insert(alarmID);
+        }
 
         populateCounts();
     }

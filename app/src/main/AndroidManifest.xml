@@ -27,6 +27,8 @@
         <activity android:name=".CourseDetailActivity"/>
         <activity android:name=".CourseAddActivity"/>
         <activity android:name=".CourseEditActivity"/>
+        <activity android:name=".AssessmentDetailActivity"/>
+        <activity android:name=".AssessmentAddActivity"/>
         <receiver android:name=".AlarmReceiver"
             android:enabled="true"
             android:exported="true"></receiver>

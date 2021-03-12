@@ -154,7 +154,7 @@ public class CourseEditActivity extends AppCompatActivity {
 
         Term selectedTerm = db.termDAO().getByID(selectedCourse.getTermID());
         int spinnerPosition = adapter.getPosition(selectedTerm.getName());
-        statusSpinner.setSelection(spinnerPosition);
+        termSpinner.setSelection(spinnerPosition);
     }
 
     private boolean isValidInput() {

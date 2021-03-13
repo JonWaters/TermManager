@@ -1,13 +1,17 @@
 package com.jonathanwaters.termmanager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import java.util.List;
 
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView passedText;
     TextView failedText;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +51,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final Button dbButton = (Button) findViewById(R.id.populateDbButton);
+        // Set Populate DB button programmatically
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.activity_main);
+        ConstraintSet set = new ConstraintSet();
+        set.clone(layout);
+
+        Button dbButton = new Button(this);
+        dbButton.setId(100);
+        dbButton.setText("Populate DB");
+        dbButton.setBackgroundColor(Color.parseColor("teal"));
+        layout.addView(dbButton);
+        set.connect(dbButton.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 64);
+        set.connect(dbButton.getId(),ConstraintSet.RIGHT,ConstraintSet.PARENT_ID,ConstraintSet.RIGHT,96);
+        set.connect(dbButton.getId(),ConstraintSet.LEFT,ConstraintSet.PARENT_ID,ConstraintSet.LEFT,96);
+        set.constrainHeight(dbButton.getId(), 100);
+        set.applyTo(layout);
+
         dbButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

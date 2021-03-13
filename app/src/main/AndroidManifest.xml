@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuActivity"/>
-        <activity android:name=".TermListActivity"/>
+        <activity android:name=".TermListActivity"
+            android:label="Terms"/>
         <activity android:name=".CourseListActivity"/>
         <activity android:name=".AssessmentListActivity"/>
         <activity android:name=".TermDetailActivity"/>

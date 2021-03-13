@@ -2,10 +2,13 @@ package com.jonathanwaters.termmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,6 +63,44 @@ public class TermDetailActivity extends AppCompatActivity {
         endDate.setText(dateFormat.format(selectedTerm.getEndDate()));
 
         populateList();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_deleteterm, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.deleteterm) {
+            List<Course> courseList = db.courseDAO().getAll();
+            int courseTermID;
+            int courseCount = 0;
+
+            for (Course course : courseList) {
+                courseTermID = course.getTermID();
+
+                if (courseTermID == termID) {
+                    courseCount++;
+                }
+            }
+
+            if (courseCount > 0) {
+                Toast.makeText(getApplicationContext(), "A term cannot be deleted with courses associated", Toast.LENGTH_SHORT).show();
+            } else {
+                db.termDAO().delete(selectedTerm);
+                Toast.makeText(getApplicationContext(), "The term was deleted", Toast.LENGTH_SHORT).show();
+                populateList();
+            }
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void populateList() {

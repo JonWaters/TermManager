@@ -2,8 +2,11 @@ package com.jonathanwaters.termmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,6 +58,28 @@ public class AssessmentDetailActivity extends AppCompatActivity {
         });
 
         populateFields();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_deleteassessment, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.deleteassessment) {
+            db.assessmentDAO().delete(selectedAssessment);
+            Toast.makeText(getApplicationContext(), "The assessment was deleted", Toast.LENGTH_SHORT).show();
+            finish();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void populateFields() {

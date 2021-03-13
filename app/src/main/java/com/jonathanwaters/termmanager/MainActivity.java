@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         set.connect(dbButton.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 64);
         set.connect(dbButton.getId(),ConstraintSet.RIGHT,ConstraintSet.PARENT_ID,ConstraintSet.RIGHT,96);
         set.connect(dbButton.getId(),ConstraintSet.LEFT,ConstraintSet.PARENT_ID,ConstraintSet.LEFT,96);
-        set.constrainHeight(dbButton.getId(), 100);
+        set.constrainHeight(dbButton.getId(), 200);
         set.applyTo(layout);
 
         dbButton.setOnClickListener(new View.OnClickListener() {

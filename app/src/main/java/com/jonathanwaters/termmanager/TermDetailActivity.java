@@ -94,7 +94,7 @@ public class TermDetailActivity extends AppCompatActivity {
             } else {
                 db.termDAO().delete(selectedTerm);
                 Toast.makeText(getApplicationContext(), "The term was deleted", Toast.LENGTH_SHORT).show();
-                populateList();
+                finish();
             }
 
             return true;

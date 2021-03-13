@@ -3,11 +3,14 @@ package com.jonathanwaters.termmanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -85,6 +88,28 @@ public class CourseDetailActivity extends AppCompatActivity {
 
         populateFields();
         populateList();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_deletecourse, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.deletecourse) {
+            db.courseDAO().delete(selectedCourse);
+            Toast.makeText(getApplicationContext(), "The course was deleted", Toast.LENGTH_SHORT).show();
+            finish();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void populateFields() {

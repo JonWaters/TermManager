@@ -26,6 +26,8 @@ public class AssessmentDetailActivity extends AppCompatActivity {
     TextView infoText;
     TextView alarmDateText;
     TextView statusText;
+    TextView dueAlarmText;
+    TextView courseNameText;
 
     int assessmentID;
     Database db;
@@ -43,6 +45,8 @@ public class AssessmentDetailActivity extends AppCompatActivity {
         infoText = (TextView) findViewById(R.id.infoText);
         alarmDateText = (TextView) findViewById(R.id.alarmDateText);
         statusText = (TextView) findViewById(R.id.assessmentStatusText);
+        dueAlarmText = (TextView) findViewById(R.id.dueAlarmDateText);
+        courseNameText = (TextView) findViewById(R.id.assessmentCourseNameText);
 
         db = Database.getInstance(this);
         assessmentID = getIntent().getExtras().getInt("assessmentID");
@@ -90,6 +94,10 @@ public class AssessmentDetailActivity extends AppCompatActivity {
         infoText.setText(selectedAssessment.getInfo());
         alarmDateText.setText(dateFormat.format(selectedAssessment.getAlarmDate()));
         statusText.setText(selectedAssessment.getStatus());
+        dueAlarmText.setText(dateFormat.format(selectedAssessment.getDueAlarmDate()));
+
+        Course selectedCourse = db.courseDAO().getByID(selectedAssessment.getCourseID());
+        courseNameText.setText(selectedCourse.getName());
     }
 
     @Override

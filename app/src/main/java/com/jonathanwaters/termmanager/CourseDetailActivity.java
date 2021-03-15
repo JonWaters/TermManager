@@ -36,6 +36,7 @@ public class CourseDetailActivity extends AppCompatActivity {
     TextView startAlarm;
     TextView dueAlarm;
     TextView notesText;
+    TextView termNameText;
 
     Course selectedCourse;
     int courseID;
@@ -58,6 +59,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         startAlarm = (TextView) findViewById(R.id.startDateAlarmText);
         dueAlarm = (TextView) findViewById(R.id.dueDateAlarmText);
         notesText = (TextView) findViewById(R.id.courseDetailNotesText);
+        termNameText = (TextView) findViewById(R.id.courseTermNameText);
 
         notesText.setMovementMethod(new ScrollingMovementMethod());
         db = Database.getInstance(this);
@@ -125,6 +127,9 @@ public class CourseDetailActivity extends AppCompatActivity {
         startAlarm.setText(dateFormat.format(selectedCourse.getStartAlarm()));
         dueAlarm.setText(dateFormat.format(selectedCourse.getDueAlarm()));
         notesText.setText(selectedCourse.getNotes());
+
+        Term selectedTerm = db.termDAO().getByID(selectedCourse.getTermID());
+        termNameText.setText(selectedTerm.getName());
     }
 
     private void populateList() {

@@ -164,9 +164,19 @@ public class PopulateDB {
         }
     }
 
+    private static Date c195AssessmentDueAlarm;
+
+    static {
+        try {
+            c195AssessmentDueAlarm = new SimpleDateFormat("MM/dd/yyyy").parse("02/20/1970");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static Assessment c195Assessment = new Assessment("C195 Assessment", "Performance",
             "Assessment title", c195AssessmentDue, "Assessment info", c195AssessmentAlarm,
-            "Passed", 1, 5);
+            "Passed", 1, 5, c195AssessmentDueAlarm, 6);
 
     private static Date c196AssessmentDue;
 
@@ -188,9 +198,19 @@ public class PopulateDB {
         }
     }
 
+    private static Date c196AssessmentDueAlarm;
+
+    static {
+        try {
+            c196AssessmentDueAlarm = new SimpleDateFormat("MM/dd/yyyy").parse("04/20/1970");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static Assessment c196Assessment = new Assessment("C196 Assessment", "Performance",
             "Assessment title", c196AssessmentDue, "Assessment info", c196AssessmentAlarm,
-            "Pending", 2, 6);
+            "Pending", 2, 7, c196AssessmentDueAlarm, 8);
 
     public PopulateDB() throws ParseException {
     }

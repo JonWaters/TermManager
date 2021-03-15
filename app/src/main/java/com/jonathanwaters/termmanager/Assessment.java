@@ -37,9 +37,14 @@ public class Assessment {
     private int courseID;
     @ColumnInfo(name = "alarm_code")
     private int alarmCode;
+    @ColumnInfo(name = "due_alarm_date")
+    private Date dueAlarmDate;
+    @ColumnInfo(name = "due_alarm_code")
+    private int dueAlarmCode;
 
     public Assessment(int id, String name, String type, String title, Date dueDate, String info,
-                      Date alarmDate, String status, int courseID, int alarmCode) {
+                      Date alarmDate, String status, int courseID, int alarmCode, Date dueAlarmDate,
+                      int dueAlarmCode) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -50,11 +55,14 @@ public class Assessment {
         this.status= status;
         this.courseID = courseID;
         this.alarmCode = alarmCode;
+        this.dueAlarmDate = dueAlarmDate;
+        this.dueAlarmCode = dueAlarmCode;
     }
 
     @Ignore
     public Assessment(String name, String type, String title, Date dueDate, String info,
-                      Date alarmDate, String status, int courseID, int alarmCode) {
+                      Date alarmDate, String status, int courseID, int alarmCode, Date dueAlarmDate,
+                      int dueAlarmCode) {
         this.name = name;
         this.type = type;
         this.title = title;
@@ -64,6 +72,8 @@ public class Assessment {
         this.status = status;
         this.courseID = courseID;
         this.alarmCode = alarmCode;
+        this.dueAlarmDate = dueAlarmDate;
+        this.dueAlarmCode = dueAlarmCode;
     }
 
     @Ignore
@@ -148,5 +158,21 @@ public class Assessment {
 
     public void setAlarmCode(int alarmCode) {
         this.alarmCode = alarmCode;
+    }
+
+    public Date getDueAlarmDate() {
+        return dueAlarmDate;
+    }
+
+    public void setDueAlarmDate(Date dueAlarmDate) {
+        this.dueAlarmDate = dueAlarmDate;
+    }
+
+    public int getDueAlarmCode() {
+        return dueAlarmCode;
+    }
+
+    public void setDueAlarmCode(int dueAlarmCode) {
+        this.dueAlarmCode = dueAlarmCode;
     }
 }

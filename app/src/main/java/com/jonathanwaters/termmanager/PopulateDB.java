@@ -1,6 +1,7 @@
 package com.jonathanwaters.termmanager;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -226,6 +227,10 @@ public class PopulateDB {
             db.courseDAO().insert(c196);
             db.assessmentDAO().insert(c195Assessment);
             db.assessmentDAO().insert(c196Assessment);
+            Toast.makeText(context, "The database was populated", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "The database can only be populated with sample data if it is empty",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 }

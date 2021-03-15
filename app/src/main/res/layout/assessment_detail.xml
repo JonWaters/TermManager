@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Alarm Date:"
+        android:text="Start Alarm:"
         app:layout_constraintEnd_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -132,8 +132,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Status:"
-        app:layout_constraintEnd_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintEnd_toEndOf="@+id/textView32"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
     <TextView
         android:id="@+id/assessmentStatusText"
@@ -143,5 +143,44 @@
         android:layout_marginTop="8dp"
         android:text="No Data"
         app:layout_constraintStart_toEndOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/dueAlarmDateText" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Due Alarm:"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/dueAlarmDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:text="No Data"
+        app:layout_constraintStart_toEndOf="@+id/textView32"
         app:layout_constraintTop_toBottomOf="@+id/alarmDateText" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="1dp"
+        android:text="Course:"
+        app:layout_constraintEnd_toEndOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/assessmentCourseNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:text="No Data"
+        app:layout_constraintStart_toEndOf="@+id/textView34"
+        app:layout_constraintTop_toBottomOf="@+id/assessmentStatusText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

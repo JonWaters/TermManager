@@ -103,7 +103,7 @@
         android:inputType="date"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/assessmentTitleEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/assessmentStartDateEditText" />
 
     <EditText
         android:id="@+id/assessmentInfoEditText"
@@ -204,4 +204,25 @@
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView35"
         app:layout_constraintTop_toBottomOf="@+id/assessmentAlarmDateEditText" />
+
+    <EditText
+        android:id="@+id/assessmentStartDateEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="01/01/2020"
+        android:inputType="date"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/textView37"
+        app:layout_constraintTop_toBottomOf="@+id/assessmentTitleEditText" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Date:"
+        app:layout_constraintBaseline_toBaselineOf="@+id/assessmentStartDateEditText"
+        app:layout_constraintEnd_toEndOf="@+id/textView12" />
 </androidx.constraintlayout.widget.ConstraintLayout>

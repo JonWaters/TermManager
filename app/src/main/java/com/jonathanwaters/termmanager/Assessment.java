@@ -41,10 +41,12 @@ public class Assessment {
     private Date dueAlarmDate;
     @ColumnInfo(name = "due_alarm_code")
     private int dueAlarmCode;
+    @ColumnInfo(name = "start_date")
+    private Date startDate;
 
     public Assessment(int id, String name, String type, String title, Date dueDate, String info,
                       Date alarmDate, String status, int courseID, int alarmCode, Date dueAlarmDate,
-                      int dueAlarmCode) {
+                      int dueAlarmCode, Date startDate) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -57,12 +59,13 @@ public class Assessment {
         this.alarmCode = alarmCode;
         this.dueAlarmDate = dueAlarmDate;
         this.dueAlarmCode = dueAlarmCode;
+        this.startDate = startDate;
     }
 
     @Ignore
     public Assessment(String name, String type, String title, Date dueDate, String info,
                       Date alarmDate, String status, int courseID, int alarmCode, Date dueAlarmDate,
-                      int dueAlarmCode) {
+                      int dueAlarmCode, Date startDate) {
         this.name = name;
         this.type = type;
         this.title = title;
@@ -74,6 +77,7 @@ public class Assessment {
         this.alarmCode = alarmCode;
         this.dueAlarmDate = dueAlarmDate;
         this.dueAlarmCode = dueAlarmCode;
+        this.startDate = startDate;
     }
 
     @Ignore
@@ -174,5 +178,13 @@ public class Assessment {
 
     public void setDueAlarmCode(int dueAlarmCode) {
         this.dueAlarmCode = dueAlarmCode;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 }

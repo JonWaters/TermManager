@@ -28,18 +28,22 @@ public class AssessmentEditActivity extends AppCompatActivity {
     EditText assessmentNameText;
     EditText typeText;
     EditText titleText;
+    EditText startDateText;
     EditText dueDateText;
     EditText infoText;
     EditText alarmDateText;
+    EditText dueAlarmText;
     Spinner statusSpinner;
     Spinner courseSpinner;
 
     String assessmentName;
     String type;
     String title;
+    Date startDate;
     Date dueDate;
     String info;
     Date alarmDate;
+    Date dueAlarm;
     String status;
 
     Database db;
@@ -57,9 +61,11 @@ public class AssessmentEditActivity extends AppCompatActivity {
         assessmentNameText = (EditText) findViewById(R.id.assessmentNameEditText);
         typeText = (EditText) findViewById(R.id.typeEditText);
         titleText = (EditText) findViewById(R.id.assessmentTitleEditText);
+        startDateText = (EditText) findViewById(R.id.assessmentStartDateEditText);
         dueDateText = (EditText) findViewById(R.id.assessmentDueDateEditText);
         infoText = (EditText) findViewById(R.id.assessmentInfoEditText);
         alarmDateText = (EditText) findViewById(R.id.assessmentAlarmDateEditText);
+        dueAlarmText = (EditText) findViewById(R.id.assessmentDueAlarmEditText);
         statusSpinner = (Spinner) findViewById(R.id.assessmentStatusSpinner);
         courseSpinner = (Spinner) findViewById(R.id.assessmentCourseSpinner);
 
@@ -75,13 +81,16 @@ public class AssessmentEditActivity extends AppCompatActivity {
                     selectedAssessment.setName(assessmentName);
                     selectedAssessment.setType(type);
                     selectedAssessment.setTitle(title);
+                    selectedAssessment.setStartDate(startDate);
                     selectedAssessment.setDueDate(dueDate);
                     selectedAssessment.setInfo(info);
                     selectedAssessment.setAlarmDate(alarmDate);
+                    selectedAssessment.setDueAlarmDate(dueAlarm);
                     selectedAssessment.setStatus(status);
                     selectedAssessment.setCourseID(getSelectedCourseID());
                     db.assessmentDAO().update(selectedAssessment);
-                    setAlarm();
+                    setStartAlarm();
+                    setDueAlarm();
                     Toast.makeText(getApplicationContext(), "The new assessment was modified", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -98,9 +107,11 @@ public class AssessmentEditActivity extends AppCompatActivity {
         assessmentNameText.setText(selectedAssessment.getName());
         typeText.setText(selectedAssessment.getType());
         titleText.setText(selectedAssessment.getTitle());
+        startDateText.setText(dateFormat.format(selectedAssessment.getStartDate()));
         dueDateText.setText(dateFormat.format(selectedAssessment.getDueDate()));
         infoText.setText(selectedAssessment.getInfo());
         alarmDateText.setText(dateFormat.format(selectedAssessment.getAlarmDate()));
+        dueAlarmText.setText(dateFormat.format(selectedAssessment.getDueAlarmDate()));
     }
 
     private void populateStatusSpinner() {
@@ -172,6 +183,14 @@ public class AssessmentEditActivity extends AppCompatActivity {
         }
 
         try {
+            startDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateText.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            isValid = false;
+            Toast.makeText(this, "The start date is invalid", Toast.LENGTH_SHORT).show();
+        }
+
+        try {
             dueDate = new SimpleDateFormat("MM/dd/yyyy").parse(dueDateText.getText().toString());
         } catch (ParseException e) {
             e.printStackTrace();
@@ -185,6 +204,14 @@ public class AssessmentEditActivity extends AppCompatActivity {
             e.printStackTrace();
             isValid = false;
             Toast.makeText(this, "The alarm date is invalid", Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            dueAlarm = new SimpleDateFormat("MM/dd/yyyy").parse(dueAlarmText.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            isValid = false;
+            Toast.makeText(this, "The due alarm date is invalid", Toast.LENGTH_SHORT).show();
         }
 
         status = statusSpinner.getSelectedItem().toString();
@@ -209,7 +236,7 @@ public class AssessmentEditActivity extends AppCompatActivity {
         return courseID;
     }
 
-    private void setAlarm() {
+    private void setStartAlarm() {
 
         Calendar alarmCal = Calendar.getInstance();
         alarmCal.setTime(alarmDate);
@@ -217,6 +244,18 @@ public class AssessmentEditActivity extends AppCompatActivity {
         Intent intent = new Intent(AssessmentEditActivity.this, AlarmReceiver.class);
         intent.putExtra("mesg", "The " + assessmentName + " assessment is starting today");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(AssessmentEditActivity.this, selectedAssessment.getAlarmCode(), intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmCal.getTimeInMillis(), pendingIntent);
+    }
+
+    private void setDueAlarm() {
+
+        Calendar alarmCal = Calendar.getInstance();
+        alarmCal.setTime(dueAlarm);
+
+        Intent intent = new Intent(AssessmentEditActivity.this, AlarmReceiver.class);
+        intent.putExtra("mesg", "The " + assessmentName + " assessment is due today");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(AssessmentEditActivity.this, selectedAssessment.getDueAlarmCode(), intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarmCal.getTimeInMillis(), pendingIntent);
     }

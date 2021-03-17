@@ -32,7 +32,7 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="128dp"
             android:layout_marginTop="16dp"
             android:text="Start Date:"
             app:layout_constraintStart_toStartOf="parent"
@@ -113,10 +113,10 @@
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="128dp"
             android:text="Instructor Phone:"
-            app:layout_constraintEnd_toEndOf="@+id/textView16"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
+            app:layout_constraintStart_toEndOf="@+id/startDateText" />
 
         <TextView
             android:id="@+id/textView18"
@@ -150,9 +150,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="Assessments:"
-            app:layout_constraintEnd_toEndOf="@+id/textView20"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
@@ -181,10 +180,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
             android:text="No Data"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/instructorNameText" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView17"
+            app:layout_constraintStart_toEndOf="@+id/textView17" />
 
         <TextView
             android:id="@+id/instructorEmailText"

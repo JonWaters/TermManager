@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:isScrollContainer="true"
     android:scrollIndicators="right"
     android:scrollbarStyle="insideOverlay"
-    tools:context=".CourseDetailActivity">
+    tools:context=".CourseEditActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

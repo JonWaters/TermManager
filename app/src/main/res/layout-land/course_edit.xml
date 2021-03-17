@@ -56,9 +56,10 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
             android:text="Instructor Name:"
             app:layout_constraintBaseline_toBaselineOf="@+id/instructorNameEditText"
-            app:layout_constraintEnd_toEndOf="@+id/textView15" />
+            app:layout_constraintStart_toEndOf="@+id/courseNameEditText" />
 
         <TextView
             android:id="@+id/textView17"
@@ -153,8 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/courseEndDateEditText"
             app:layout_constraintStart_toEndOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/courseEndDateEditText" />
 
@@ -163,12 +163,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/textView16"
-            app:layout_constraintTop_toBottomOf="@+id/courseStatusSpinner" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/courseNameEditText"
+            app:layout_constraintStart_toEndOf="@+id/textView16" />
 
         <EditText
             android:id="@+id/instructorPhoneEditText"
@@ -226,8 +225,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/alarmDueDateEditText"
             app:layout_constraintStart_toEndOf="@+id/textView21"
             app:layout_constraintTop_toBottomOf="@+id/alarmDueDateEditText" />
 
